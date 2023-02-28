@@ -21,7 +21,7 @@ const HomePage = () => {
   const option = useMemo(() => {
     return {
       title: {
-        text: AREA_LIST.find((item) => item.name === type)?.label
+        text: SECOND_HOUSE_TYPE.find((item) => item.value === type)?.label
       },
       legend: {},
       grid: {
