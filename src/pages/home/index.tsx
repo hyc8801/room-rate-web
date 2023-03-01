@@ -5,6 +5,7 @@ import { getSecondHouse } from '../../apis/second-house';
 import "./index.less";
 import { AREA_LIST, SECOND_HOUSE_TYPE } from './constant';
 import { Select } from 'antd';
+import { Link } from 'react-router-dom';
 
 const areaFieldNames = {
   label: "name",
@@ -65,8 +66,6 @@ const HomePage = () => {
         })
       })
     })
-    console.log(areaData)
-    console.log(areaData?.[area])
     return {
       title: {
         text: area
@@ -99,10 +98,10 @@ const HomePage = () => {
       series: areaData?.[area] || []
     }
   }, [data, area])
-  console.log(option)
-  console.log(areaOption)
   return (
     <div className='home-page'>
+      <Link to="/community" >查看小区数据</Link>
+      <br />
       <Select options={SECOND_HOUSE_TYPE} value={type} onChange={setType} />
       <ReactECharts option={option} />
       <br />

@@ -5,6 +5,7 @@ import { getCommunity } from '../../apis/second-house';
 import "./index.less";
 import { COMMUNITY_LIST, COMMUNITY_TYPE } from './constant';
 import { Select } from 'antd';
+import { Link } from 'react-router-dom';
 
 const areaFieldNames = {
   label: "name",
@@ -103,6 +104,8 @@ const CommunityPage = () => {
   console.log(areaOption)
   return (
     <div className='home-page'>
+      <Link to="/" >查看区域数据</Link>
+      <br />
       <Select options={COMMUNITY_TYPE} value={type} onChange={setType} />
       <ReactECharts option={option} />
       <br />
