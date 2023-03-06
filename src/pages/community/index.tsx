@@ -4,7 +4,7 @@ import { useRequest } from 'ahooks';
 import { getCommunity } from '../../apis/second-house';
 import "./index.less";
 import { COMMUNITY_LIST, COMMUNITY_TYPE } from './constant';
-import { Select } from 'antd';
+import { Button, Select } from 'antd';
 import { Link } from 'react-router-dom';
 
 const areaFieldNames = {
@@ -66,8 +66,6 @@ const CommunityPage = () => {
         })
       })
     })
-    console.log(areaData)
-    console.log(areaData?.[area])
     return {
       title: {
         text: area
@@ -100,11 +98,17 @@ const CommunityPage = () => {
       series: areaData?.[area] || []
     }
   }, [data, area])
-  console.log(option)
-  console.log(areaOption)
   return (
     <div className='home-page'>
       <Link to="/" >查看区域数据</Link>
+       { COMMUNITY_LIST.map((item) => (
+        <Button
+          key={item.id}
+          type="link"
+          target="_blank"
+          href={`https://cq.ke.com/ershoufang/co32f2l3c${item.id}/?sug=${item.name}`}
+        > {item.name} </Button>
+       ))}
       <br />
       <Select options={COMMUNITY_TYPE} value={type} onChange={setType} />
       <ReactECharts option={option} />
